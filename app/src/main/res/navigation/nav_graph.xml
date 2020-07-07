@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.madlevel7example.HomeFragment"
+        android:name="nl.hva.madlevel7example.ui.HomeFragment"
         android:label="@string/home_fragment_label"
         tools:layout="@layout/fragment_home">
 
@@ -20,17 +20,13 @@
     </fragment>
     <fragment
         android:id="@+id/createQuizFragment"
-        android:name="com.example.madlevel7example.CreateQuizFragment"
-        android:label="@string/create_quiz_fragment_label"
+        android:name="nl.hva.madlevel7example.ui.CreateQuizFragment"
+        android:label="@string/create_quiz"
         tools:layout="@layout/fragment_create_quiz">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/quizFragment"
-        android:name="com.example.madlevel7example.QuizFragment"
+        android:name="nl.hva.madlevel7example.ui.QuizFragment"
         android:label="@string/quiz_fragment_label"
         tools:layout="@layout/fragment_quiz" />
 </navigation>

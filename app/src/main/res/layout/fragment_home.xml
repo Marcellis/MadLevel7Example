@@ -4,42 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context="nl.hva.madlevel7example.ui.HomeFragment">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:text="Welcome to the Quiz Maker. Please create a question before starting the quiz."
+        android:text="@string/before_start_quiz"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@id/btnCreateQuestion"
+        app:layout_constraintBottom_toTopOf="@+id/btnCreateQuiz"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
-        android:id="@+id/btnCreateQuestion"
+        android:id="@+id/btnCreateQuiz"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@color/colorPrimary"
-        android:text="Create Quiz"
+        android:text="@string/create_quiz"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnStartQuiz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/btnStartQuiz"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:alpha="0.5"
         android:background="@color/colorPrimary"
-        android:text="Start Quiz"
+        android:clickable="false"
+        android:text="@string/start_quiz"
         android:textColor="@android:color/white"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnCreateQuestion" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCreateQuiz" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
