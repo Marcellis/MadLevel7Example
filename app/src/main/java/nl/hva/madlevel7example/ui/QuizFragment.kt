@@ -15,7 +15,7 @@ import nl.hva.madlevel7example.vm.QuizViewModel
 
 class QuizFragment : Fragment() {
 
-    private val viewModel: QuizViewModel by viewModels()
+    private val viewModel: QuizViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,9 +29,10 @@ class QuizFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //fetch data from viewmodel
-        viewModel.getQuiz()
+        observeQuiz()
+    }
 
+    private fun observeQuiz() {
         viewModel.quiz.observe(viewLifecycleOwner, Observer {
             val quiz = it
             tvQuestion.text = quiz.question
@@ -39,7 +40,7 @@ class QuizFragment : Fragment() {
             btnConfirmAnswer.setOnClickListener {
                 if (viewModel.isAnswerCorrect(etAnswer.text.toString())) {
                     Toast.makeText(context, "Your answer is correct!", Toast.LENGTH_LONG).show()
-                    findNavController().navigateUp()
+                    findNavController().popBackStack()
                 } else {
                     Toast.makeText(
                         context,
@@ -49,7 +50,6 @@ class QuizFragment : Fragment() {
                 }
             }
         })
-
     }
 
 }

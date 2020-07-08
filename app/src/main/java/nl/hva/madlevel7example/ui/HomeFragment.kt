@@ -14,7 +14,7 @@ import nl.hva.madlevel7example.vm.QuizViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
-    private val viewModel: QuizViewModel by viewModels()
+    private val viewModel: QuizViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +39,7 @@ class HomeFragment : Fragment() {
             if (!it.answer.isBlank() || !it.answer.isBlank()) {
                 btnStartQuiz.alpha = 1.0f
                 btnStartQuiz.isClickable = true
+
                 btnStartQuiz.setOnClickListener {
                     navController.navigate(R.id.action_homeFragment_to_quizFragment)
                 }

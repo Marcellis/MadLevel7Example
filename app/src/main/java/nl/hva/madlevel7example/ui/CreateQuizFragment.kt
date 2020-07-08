@@ -42,7 +42,7 @@ class CreateQuizFragment : Fragment() {
         })
 
         viewModel.errorText.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(activity, it, Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
         })
     }
 

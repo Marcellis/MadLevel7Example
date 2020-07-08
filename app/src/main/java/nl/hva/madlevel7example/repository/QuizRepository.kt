@@ -17,6 +17,7 @@ class QuizRepository {
     val quiz: LiveData<Quiz>
         get() = _quiz
 
+    //the CreateQuizFragment can use this to see if creation succeeded
     private val _createSuccess: MutableLiveData<Boolean> = MutableLiveData()
 
     val createSuccess: LiveData<Boolean>
@@ -25,14 +26,16 @@ class QuizRepository {
     suspend fun getQuiz() {
         try {
             //firestore has support for coroutines via the extra dependency we've added :)
-            val data = quizDocument
-                .get()
-                .await()
+            withTimeout(5_000) {
+                val data = quizDocument
+                    .get()
+                    .await()
 
-            val question = data.getString("question").toString()
-            val answer = data.getString("answer").toString()
+                    val question = data.getString("question").toString()
+                    val answer = data.getString("answer").toString()
 
-            _quiz.value = Quiz(question, answer)
+                    _quiz.value = Quiz(question, answer)
+            }
         }  catch (e : Exception) {
             throw QuizRetrievalError("Retrieval-firebase-task was unsuccessful")
         }
@@ -41,9 +44,10 @@ class QuizRepository {
     suspend fun createQuiz(quiz: Quiz) {
         // persist data to firestore
         try {
+            //firestore has support for coroutines via the extra dependency we've added :)
             withTimeout(5_000) {
                 quizDocument
-                    .set(quiz.toMap())
+                    .set(quiz)
                     .await()
 
                 _createSuccess.value = true
