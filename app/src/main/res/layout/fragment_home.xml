@@ -4,56 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="nl.hva.madlevel7example.ui.HomeFragment">
+    tools:context=".HomeFragment">
+
+    <!--    https://stackoverflow.com/questions/37318228/how-to-make-constraintlayout-work-with-percentage-values-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
 
     <TextView
         android:id="@+id/textView"
-        style="@style/TextAppearance.MaterialComponents.Headline3"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:text="@string/before_start_quiz"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnCreateQuiz"
+        android:padding="8dp"
+        android:text="@string/tv_welcome"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <Button
-        android:id="@+id/btnCreateQuiz"
+        android:id="@+id/btCreateQuiz"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/create_quiz"
+        android:layout_margin="8dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="@string/bt_create_quiz"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/btnStartQuiz"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/btnStartQuiz"
+        android:id="@+id/btStartQuiz"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:alpha="0.5"
-        android:background="@color/colorPrimary"
+        android:layout_margin="8dp"
+        android:alpha="@dimen/material_emphasis_disabled"
+        android:backgroundTint="@color/colorPrimary"
         android:clickable="false"
-        android:text="@string/start_quiz"
+        android:text="@string/bt_start_quiz"
         android:textColor="@android:color/white"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCreateQuiz" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/btCreateQuiz" />
 </androidx.constraintlayout.widget.ConstraintLayout>

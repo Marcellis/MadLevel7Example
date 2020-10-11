@@ -1,4 +1,4 @@
-package nl.hva.madlevel7example.model
+package com.example.madlevel7example
 
 data class Quiz(
     val question: String,

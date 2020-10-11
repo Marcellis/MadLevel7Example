@@ -1,11 +1,10 @@
-package nl.hva.madlevel7example.repository
+package com.example.madlevel7example
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withTimeout
-import nl.hva.madlevel7example.model.Quiz
 
 class QuizRepository {
     private var firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -31,10 +30,10 @@ class QuizRepository {
                     .get()
                     .await()
 
-                    val question = data.getString("question").toString()
-                    val answer = data.getString("answer").toString()
+                val question = data.getString("question").toString()
+                val answer = data.getString("answer").toString()
 
-                    _quiz.value = Quiz(question, answer)
+                _quiz.value = Quiz(question, answer)
             }
         }  catch (e : Exception) {
             throw QuizRetrievalError("Retrieval-firebase-task was unsuccessful")

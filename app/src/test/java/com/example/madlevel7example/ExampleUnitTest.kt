@@ -1,4 +1,4 @@
-package nl.hva.madlevel7example
+package com.example.madlevel7example
 
 import org.junit.Test
 

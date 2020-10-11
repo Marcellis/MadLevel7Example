@@ -1,4 +1,4 @@
-package nl.hva.madlevel7example.vm
+package com.example.madlevel7example
 
 import android.app.Application
 import android.util.Log
@@ -7,8 +7,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import nl.hva.madlevel7example.model.Quiz
-import nl.hva.madlevel7example.repository.QuizRepository
 import java.util.*
 
 class QuizViewModel(application: Application) : AndroidViewModel(application) {
@@ -35,10 +33,6 @@ class QuizViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun isAnswerCorrect(answer: String): Boolean {
-        return quiz.value?.answer?.toLowerCase(Locale.ROOT) == answer.toLowerCase(Locale.ROOT)
-    }
-
     fun createQuiz(question: String, answer: String) {
         // persist data to firestore
         val quiz = Quiz(question, answer)
@@ -51,6 +45,10 @@ class QuizViewModel(application: Application) : AndroidViewModel(application) {
                 _errorText.value = errorMsg
             }
         }
+    }
+
+    fun isAnswerCorrect(answer: String): Boolean {
+        return quiz.value?.answer?.toLowerCase(Locale.ROOT) ==   answer.toLowerCase(Locale.ROOT)
     }
 
 }
