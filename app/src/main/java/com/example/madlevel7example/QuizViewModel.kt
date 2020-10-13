@@ -26,7 +26,8 @@ class QuizViewModel(application: Application) : AndroidViewModel(application) {
             try {
                 quizRepository.getQuiz()
             } catch (ex: QuizRepository.QuizRetrievalError) {
-                val errorMsg = "Something went wrong while retrieving quiz"
+                val errorMsg = "Something went wrong while retrieving quiz.\n" +
+                        "It could be that you still need to install your own google-services.json file from Firestore."
                 Log.e(TAG, ex.message ?: errorMsg)
                 _errorText.value = errorMsg
             }
@@ -40,7 +41,8 @@ class QuizViewModel(application: Application) : AndroidViewModel(application) {
             try {
                 quizRepository.createQuiz(quiz)
             } catch (ex: QuizRepository.QuizSaveError) {
-                val errorMsg = "Something went wrong while saving quiz"
+                val errorMsg = "Something went wrong while saving quiz.\n" +
+                        "It could be that you still need to install your own google-services.json file from Firestore."
                 Log.e(TAG, ex.message ?: errorMsg)
                 _errorText.value = errorMsg
             }
