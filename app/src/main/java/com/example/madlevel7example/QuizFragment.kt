@@ -7,20 +7,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_quiz.*
+import com.example.madlevel7example.databinding.FragmentQuizBinding
 
 class QuizFragment : Fragment() {
+
+    private var _binding: FragmentQuizBinding? = null
+    private val binding get() = _binding!!
 
     private val viewModel: QuizViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quiz, container, false)
+    ): View {
+        _binding = FragmentQuizBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,12 +32,12 @@ class QuizFragment : Fragment() {
     }
 
     private fun observeQuiz() {
-        viewModel.quiz.observe(viewLifecycleOwner, Observer {
+        viewModel.quiz.observe(viewLifecycleOwner, {
             val quiz = it
-            tvQuizQuestion.text = quiz.question
+            binding.tvQuizQuestion.text = quiz.question
 
-            btConfirmAnswer.setOnClickListener {
-                if (viewModel.isAnswerCorrect(etQuizAnswer.text.toString())) {
+            binding.btConfirmAnswer.setOnClickListener {
+                if (viewModel.isAnswerCorrect(binding.etQuizAnswer.text.toString())) {
                     Toast.makeText(context, "Your answer is correct!", Toast.LENGTH_LONG).show()
                     findNavController().popBackStack()
                 } else {

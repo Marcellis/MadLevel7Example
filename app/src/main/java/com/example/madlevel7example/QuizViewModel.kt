@@ -50,7 +50,7 @@ class QuizViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun isAnswerCorrect(answer: String): Boolean {
-        return quiz.value?.answer?.toLowerCase(Locale.ROOT) ==   answer.toLowerCase(Locale.ROOT)
+        return quiz.value?.answer?.toLowerCase(Locale.ROOT) == answer.toLowerCase(Locale.ROOT)
     }
 
 }

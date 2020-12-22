@@ -35,7 +35,7 @@ class QuizRepository {
 
                 _quiz.value = Quiz(question, answer)
             }
-        }  catch (e : Exception) {
+        } catch (e: Exception) {
             throw QuizRetrievalError("Retrieval-firebase-task was unsuccessful")
         }
     }
@@ -52,7 +52,7 @@ class QuizRepository {
                 _createSuccess.value = true
             }
 
-        }  catch (e : Exception) {
+        } catch (e: Exception) {
             throw QuizSaveError(e.message.toString(), e)
         }
     }
